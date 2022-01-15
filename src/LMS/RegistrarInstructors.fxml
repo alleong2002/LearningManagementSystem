@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="456.0" prefWidth="788.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="LMS.Controller">
+   <children>
+      <Line endX="485.0" layoutX="115.0" layoutY="327.0" startX="-115.0" />
+      <Pane layoutX="-2.0" layoutY="383.0" prefHeight="73.0" prefWidth="788.0" style="-fx-background-color: #000000;">
+         <children>
+            <ImageView blendMode="SRC_ATOP" fitHeight="60.0" fitWidth="72.0" layoutX="191.0" layoutY="7.0">
+               <image>
+                  <Image url="@../RegistrarEnrollButton.PNG" />
+               </image>
+            </ImageView>
+            <ImageView blendMode="SRC_ATOP" fitHeight="70.0" fitWidth="83.0" layoutX="646.0" layoutY="3.0">
+               <image>
+                  <Image url="@../RegistrarLogOutButton.PNG" />
+               </image>
+            </ImageView>
+            <ImageView blendMode="SRC_ATOP" fitHeight="70.0" fitWidth="83.0" layoutX="27.0" layoutY="3.0">
+               <image>
+                  <Image url="@../RegistrarHomeButton.PNG" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="59.0" fitWidth="66.0" layoutX="361.0" layoutY="9.0">
+               <image>
+                  <Image url="@../RegistrarSearchButton.PNG" />
+               </image>
+            </ImageView>
+            <Button fx:id="enrollNewStudent" layoutX="353.0" layoutY="9.0" mnemonicParsing="false" onAction="#goToEnrollPage" opacity="0.0" prefHeight="59.0" prefWidth="83.0" />
+            <Button fx:id="logOutButton" layoutX="632.0" layoutY="4.0" mnemonicParsing="false" onAction="#goToLogInScreen" opacity="0.0" prefHeight="70.0" prefWidth="111.0" />
+            <Button fx:id="registrarHome" layoutX="16.0" layoutY="3.0" mnemonicParsing="false" onAction="#goToRegistrarHome" opacity="0.0" prefHeight="70.0" prefWidth="104.0" />
+            <Label layoutX="49.0" layoutY="60.0" text="Home" textFill="#008cff">
+               <font>
+                  <Font name="Verdana Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="204.0" layoutY="58.0" text="Search" textFill="#008cff">
+               <font>
+                  <Font name="Verdana Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="374.0" layoutY="58.0" text="Enroll" textFill="#008cff">
+               <font>
+                  <Font name="Verdana Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="661.0" layoutY="58.0" text="Log Out" textFill="#008cff">
+               <font>
+                  <Font name="Verdana Bold" size="12.0" />
+               </font>
+            </Label>
+            <Button fx:id="search" layoutX="191.0" layoutY="4.0" mnemonicParsing="false" onAction="#goToSearchPage" opacity="0.0" prefHeight="70.0" prefWidth="104.0" />
+            <ImageView fitHeight="59.0" fitWidth="66.0" layoutX="510.0" layoutY="9.0">
+               <image>
+                  <Image url="@../RegistrarManageInstructors.PNG" />
+               </image>
+            </ImageView>
+            <Label layoutX="505.0" layoutY="58.0" text="Instructors" textFill="#008cff">
+               <font>
+                  <Font name="Verdana Bold" size="12.0" />
+               </font>
+            </Label>
+            <Button layoutX="502.0" layoutY="7.0" mnemonicParsing="false" onAction="#goToManageInstructors" opacity="0.0" prefHeight="59.0" prefWidth="83.0" />
+         </children>
+      </Pane>
+      <Label alignment="CENTER" layoutX="52.0" layoutY="14.0" prefHeight="53.0" prefWidth="684.0" text="Manage Courses and Instructors" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Verdana Bold" size="36.0" />
+         </font>
+      </Label>
+      <TextField fx:id="newCourseCode" layoutX="208.0" layoutY="120.0" prefHeight="25.0" prefWidth="83.0" promptText="Course Code (CSE 123)" />
+      <Label layoutX="52.0" layoutY="95.0" text="Create a New Course:" textFill="WHITE">
+         <font>
+            <Font name="Verdana Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="createCourseStatusMessage" alignment="CENTER" layoutX="51.0" layoutY="153.0" text="Label" textFill="WHITE" visible="false">
+         <font>
+            <Font name="Verdana Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="400.0" layoutY="95.0" text="Enroll a New Instructor:" textFill="WHITE">
+         <font>
+            <Font name="Verdana Bold" size="12.0" />
+         </font>
+      </Label>
+      <TextField fx:id="newCourseInstructor" layoutX="295.0" layoutY="120.0" prefHeight="25.0" prefWidth="72.0" promptText="Instr. WebID">
+         <font>
+            <Font size="10.5" />
+         </font></TextField>
+      <TextField fx:id="createNewInstructor" layoutX="572.0" layoutY="90.0" promptText="WebID (Username)" />
+      <Label fx:id="createInstructorStatusMessage" alignment="CENTER" layoutX="400.0" layoutY="153.0" text="Label" textFill="WHITE" visible="false">
+         <font>
+            <Font name="Verdana Bold" size="12.0" />
+         </font>
+      </Label>
+      <Button depthTest="ENABLE" layoutX="52.0" layoutY="168.0" mnemonicParsing="false" onAction="#listAllCourses" prefHeight="53.0" prefWidth="318.0" style="-fx-background-color: #561D5E;" text="List All Courses" textFill="WHITE">
+         <font>
+            <Font name="Verdana Bold" size="25.0" />
+         </font>
+      </Button>
+      <Button depthTest="ENABLE" layoutX="400.0" layoutY="168.0" mnemonicParsing="false" onAction="#listAllInstructors" prefHeight="53.0" prefWidth="318.0" style="-fx-background-color: #561D5E;" text="List All Instructors" textFill="WHITE">
+         <font>
+            <Font name="Verdana Bold" size="25.0" />
+         </font>
+      </Button>
+      <Button depthTest="ENABLE" layoutX="51.0" layoutY="114.0" mnemonicParsing="false" onAction="#createNewCourse" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: #561D5E;" text="Create" textFill="WHITE">
+         <font>
+            <Font name="Verdana Bold" size="16.0" />
+         </font>
+      </Button>
+      <Button depthTest="ENABLE" layoutX="400.0" layoutY="114.0" mnemonicParsing="false" onAction="#createNewInstructor" prefHeight="25.0" prefWidth="164.0" style="-fx-background-color: #561D5E;" text="Enroll" textFill="WHITE">
+         <font>
+            <Font name="Verdana Bold" size="16.0" />
+         </font>
+      </Button>
+      <TextField fx:id="courseTitle" layoutX="208.0" layoutY="90.0" prefHeight="25.0" prefWidth="158.0" promptText="Course Title" />
+      <ScrollPane fx:id="displayAllCourses" hbarPolicy="NEVER" layoutX="52.0" layoutY="228.0" prefHeight="154.0" prefWidth="665.0" style="-fx-background-color: #000000;" visible="false">
+         <content>
+            <AnchorPane fx:id="listCoursesAnchorPane" prefHeight="157.0" prefWidth="667.0" style="-fx-background-color: #000000;" visible="false" />
+         </content>
+      </ScrollPane>
+      <PasswordField fx:id="newInstructorPassword" layoutX="572.0" layoutY="120.0" promptText="Password" />
+   </children>
+   <cursor>
+      <Cursor fx:constant="DEFAULT" />
+   </cursor>
+</AnchorPane>
