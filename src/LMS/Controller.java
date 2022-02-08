@@ -26,6 +26,8 @@ import java.util.HashMap;
 
 public class Controller {
     private HashMap<String, Student> database = LearningManagementSystem.getDatabase();
+    private static String instructorWebID; // String used to store the login information of the current instructor user.
+    private String studentWebID; // String used to store the login information of the current student user.
     @FXML private TextField username;
     @FXML private TextField password;
     @FXML private Label textlabel;
@@ -49,6 +51,8 @@ public class Controller {
     @FXML private ScrollPane displayAllCourses;
     @FXML private ScrollPane listStudentsScrollPane;
     @FXML private AnchorPane listStudentsAnchorPane;
+    @FXML private GridPane instructorMenu;
+    @FXML private AnchorPane instructorViewCourses;
 
     public void checkValidLogin(ActionEvent e) {
         switch(username.getText()) {
@@ -67,6 +71,8 @@ public class Controller {
             default:
                 if(LearningManagementSystem.validInstructorLogin(username.getText())) {
                     if(LearningManagementSystem.getInstructors().get(username.getText()).getPassword().equals(password.getText())) {
+                        instructorWebID = username.getText();
+                        System.out.println(instructorWebID);
                         goToInstructorPage();
                         return;
                     }
@@ -196,6 +202,42 @@ public class Controller {
         }
     }
 
+    /**
+     * Changes the scene to show all of an instructors courses and students.
+     */
+    public void goToInstructorCourses() {
+        GUI g = new GUI();
+        try {
+            g.changeScene("InstructorCourses.fxml");
+        } catch(IOException exception) {
+            exception.printStackTrace();
+        }
+    }
+
+    /**
+     * Changes scene to instructor announcements page.
+     */
+    public void goToInstructorAnnouncements() {
+        GUI g = new GUI();
+        try {
+            g.changeScene("InstructorAnnouncements.fxml");
+        } catch(IOException exception) {
+            exception.printStackTrace();
+        }
+    }
+
+    /**
+     * Changes scene to instructor assignments manager.
+     */
+    public void goToInstructorAssignments() {
+        GUI g = new GUI();
+        try {
+            g.changeScene("InstructorAssignments.fxml");
+        } catch(IOException exception) {
+            exception.printStackTrace();
+        }
+    }
+
     public void search() {
         listStudentsScrollPane.setVisible(false);
         gridSearchInformation.setVisible(false);
@@ -295,6 +337,7 @@ public class Controller {
             createCourseStatusMessage.setVisible(true);
             Course course = new Course(newCourseCode.getText().substring(0,3), Integer.parseInt(newCourseCode.getText().substring(4)), courseTitle.getText());
             course.setInstructor(LMS.LearningManagementSystem.getInstructors().get(newCourseInstructor.getText()));
+            LMS.LearningManagementSystem.getInstructors().get(newCourseInstructor.getText()).getCourses().add(course);
             LMS.LearningManagementSystem.storeCourseInDatabase(course);
             newCourseCode.setText("");
             newCourseInstructor.setText("");
@@ -546,5 +589,61 @@ public class Controller {
 
 
         return table;
+    }
+
+    /**
+     * Variables used for instructor login processing and information.
+     */
+    boolean instructorMenuIsVisible = false;
+
+
+    public void displayInstructorMenu() {
+        if(instructorMenuIsVisible == false) {
+            instructorMenu.setVisible(true);
+            instructorMenuIsVisible = true;
+        } else {
+            instructorMenu.setVisible(false);
+            instructorMenuIsVisible = false;
+        }
+    }
+
+    public void listInstructorCourses() {
+        instructorViewCourses.getChildren().clear();
+        GridPane table = table(LMS.LearningManagementSystem.getInstructors().get(instructorWebID).getCourses().size());
+        instructorViewCourses.getChildren().add(table);
+        int rowCount = 0;
+        int keysIndex = 0;
+//        ArrayList<Course> keys = new ArrayList<Course>();
+//        for(Course i : LMS.LearningManagementSystem.getInstructors().get(instructorWebID).getCourses()) {
+//            keys.add(i);
+//        }
+        while(keysIndex < LMS.LearningManagementSystem.getInstructors().get(instructorWebID).getCourses().size()) {
+            Label label = new Label(LMS.LearningManagementSystem.getInstructors().get(instructorWebID).getCourses().get(keysIndex++).toString());
+            label.setFont(Font.font ("Verdana", 12));
+            label.setTextFill(Color.BLACK);
+            table.add(label, 0, rowCount);
+            if(keysIndex==LMS.LearningManagementSystem.getInstructors().get(instructorWebID).getCourses().size()) break;
+            label = new Label(LMS.LearningManagementSystem.getInstructors().get(instructorWebID).getCourses().get(keysIndex++).toString());
+            label.setFont(Font.font ("Verdana", 12));
+            label.setTextFill(Color.BLACK);
+            table.add(label, 1, rowCount);
+            if(keysIndex==LMS.LearningManagementSystem.getInstructors().get(instructorWebID).getCourses().size()) break;
+            label = new Label(LMS.LearningManagementSystem.getInstructors().get(instructorWebID).getCourses().get(keysIndex++).toString());
+            label.setFont(Font.font ("Verdana", 12));
+            label.setTextFill(Color.BLACK);
+            table.add(label, 2, rowCount);
+            if(keysIndex==LMS.LearningManagementSystem.getInstructors().get(instructorWebID).getCourses().size()) break;
+            label = new Label(LMS.LearningManagementSystem.getInstructors().get(instructorWebID).getCourses().get(keysIndex++).toString());
+            label.setFont(Font.font ("Verdana", 12));
+            label.setTextFill(Color.BLACK);
+            table.add(label, 3, rowCount);
+            if(keysIndex==LMS.LearningManagementSystem.getInstructors().get(instructorWebID).getCourses().size()) break;
+            label = new Label(LMS.LearningManagementSystem.getInstructors().get(instructorWebID).getCourses().get(keysIndex++).toString());
+            label.setFont(Font.font ("Verdana", 12));
+            label.setTextFill(Color.BLACK);
+            table.add(label, 4, rowCount);
+
+            rowCount++;
+        }
     }
 }

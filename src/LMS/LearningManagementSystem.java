@@ -16,6 +16,9 @@ import java.util.ArrayList;
 import static javafx.application.Application.launch;
 
 public class LearningManagementSystem {
+    /**
+     * Non-relational database. For all objects, the Key is a String containing either a UserID or a Course Code.
+     */
     private static HashMap<String, Student> database = new HashMap<>(); // WebID Key (as String), Student as Value.
     private static HashMap<String, String> password = new HashMap<>(); // WebID Key (as String), Password as Value.
     private static HashMap<String, Course> courses = new HashMap<>(); // Course Code (as String), Course as Value.

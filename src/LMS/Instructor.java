@@ -50,6 +50,13 @@ public class Instructor implements Serializable {
      */
     public String getPassword() { return this.password; }
 
+    /**
+     * Getter for Courses.
+     */
+    public ArrayList<Course> getCourses() {
+        return this.courses;
+    }
+
     public String toString() {
         String s = this.getWebID();
         return s;
