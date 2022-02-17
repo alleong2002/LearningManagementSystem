@@ -1,0 +1,14 @@
+.root{
+    -fx-background-image: url("LMSBackground.png");
+    -fx-background-repeat: stretch;
+    -fx-background-size: 900 506;
+    -fx-background-position: center center;
+    -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0);
+}
+#logInButton {
+    -fx-effect: innershadow(one-pass-box, black, 10, 0.6, 0, 0);
+    -fx-background-color: transparent;
+}
+#logInButton:hover {
+    -fx-background-color:#dae7f3;
+}
